@@ -36,7 +36,7 @@ def test_all_new_fields():
         "password": register_data["password"]
     }
     login_response = client.post("/api/v1/users/login", json=login_data)
-    print(f"\n✅ 用户登录:")
+    print("\n✅ 用户登录:")
     print(f"   状态码: {login_response.status_code}")
     if login_response.status_code != 200:
         print(f"   错误: {login_response.json()}")
@@ -95,7 +95,7 @@ def test_all_new_fields():
     assert reminder['amount'] == 250000, "amount应为250000分"
     assert reminder['location']['address'] == "北京市朝阳区建国路1号", "location应包含正确地址"
     assert len(reminder['attachments']) == 2, "应有2个附件"
-    assert reminder['is_completed'] == False, "新创建的提醒应未完成"
+    assert not reminder['is_completed'], "新创建的提醒应未完成"
     assert reminder['completed_at'] is None, "未完成的提醒completed_at应为None"
     
     print("\n🎉 所有字段验证通过！")

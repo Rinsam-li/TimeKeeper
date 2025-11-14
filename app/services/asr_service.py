@@ -121,7 +121,7 @@ class BaiduASR:
         self._access_token: Optional[str] = None
         self._token_expires_at: Optional[datetime] = None
     
-    async def _get_access_token(self) -> str:
+    async def _get_access_token(self) -> str | None:
         """获取access token（带缓存）"""
         if self._access_token and self._token_expires_at:
             if datetime.now() < self._token_expires_at:
